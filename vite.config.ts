@@ -9,6 +9,14 @@ const variablePath = normalizePath(path.resolve('./src/variable.scss'))
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  optimizeDeps: {
+    // 为一个字符串数组
+    force: true,
+    entries: ['./src/App.vue'],
+    esbuildOptions: {
+      plugins: [],
+    },
+  },
   resolve: {
     alias: {
       '@assets': path.join(__dirname, 'src/assets'),
