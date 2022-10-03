@@ -15,6 +15,8 @@
     "@huogui/eslint-config": "^1.1.30",
     "@types/node": "^18.8.0",
     "@vitejs/plugin-vue": "^3.1.0",
+    "autoprefixer": "^10.4.12",
+    "sass": "^1.55.0",
     "typescript": "^4.6.4",
     "vite": "^3.1.0",
     "vue-tsc": "^0.40.4"

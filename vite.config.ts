@@ -1,9 +1,30 @@
 import path from 'path'
-import { defineConfig } from 'vite'
+import { defineConfig,normalizePath } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import autoprefixer from 'autoprefixer';
+
+// 用 normalizePath 解决 window 下的路径问题
+const variablePath = normalizePath(path.resolve('./src/variable.scss'));
+console.log(variablePath)
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  root: path.join(__dirname, '.'),
+    // css 相关的配置
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // additionalData 的内容会在每个 scss 文件的开头自动注入
+        additionalData: `@import "./src/variable.scss";`
+      }
+    },
+    postcss: {
+      plugins: [
+        autoprefixer({
+          // 指定目标浏览器
+          overrideBrowserslist: ['Chrome > 40', 'ff > 31', 'ie 11']
+        })
+      ]
+    }
+  },
   plugins: [vue()]
 })
